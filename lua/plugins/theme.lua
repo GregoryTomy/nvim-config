@@ -1,8 +1,23 @@
 return {
   -- { "ellisonleao/gruvbox.nvim" },
-  -- { "yorickpeterse/nvim-grey" },
   -- { "sainnhe/edge", style = "aura" },
-  { "rose-pine/neovim", name = "rose-pine" },
+  --
+  { "EdenEast/nightfox.nvim" },
+  { "shaunsingh/nord.nvim" },
+  {
+    "rose-pine/neovim",
+    config = function()
+      require("rose-pine").setup({
+        -- optional conf
+        styles = {
+          bold = false,
+          italic = false,
+          transparency = false,
+        },
+      })
+    end,
+    name = "rose-pine",
+  },
   {
     "rebelot/kanagawa.nvim",
     lazy = false,
@@ -35,12 +50,30 @@ return {
       })
     end,
   },
-
+  -- Lazy
+  {
+    "vague2k/vague.nvim",
+    config = function()
+      require("vague").setup({
+        -- optional configuration here
+      })
+    end,
+  },
+  {
+    "comfysage/evergarden",
+    priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
+    opts = {
+      transparent_background = true,
+      variant = "medium", -- 'hard'|'medium'|'soft'
+      overrides = {}, -- add custom overrides
+    },
+  },
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa-dragon",
+      colorscheme = "vague",
+      terminalColors = true,
     },
   },
 }
